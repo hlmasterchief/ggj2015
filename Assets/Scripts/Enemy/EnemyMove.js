@@ -39,6 +39,9 @@ function Update () {
 		if (castObj.transform && fallSpeed > 0) {
 			var hitTop = castObj.transform.localPosition.y + castObj.collider.bounds.extents.y;
 			transform.localPosition.y -= transform.localPosition.y - collider.bounds.extents.y - hitTop;
+			
+			onAir = false;
+			onJump = false;
 		}
 	}
 	
