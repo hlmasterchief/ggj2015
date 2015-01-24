@@ -11,10 +11,9 @@ var posx : float;
 var posy :float;
 var angle: float = 30;
 var a: float;
-var t: float;
-var y : float;
-var x: float;
+
 var flag: boolean = true;
+var start: boolean = true;
 
 function Start() {
 	vx = vix;
@@ -27,6 +26,19 @@ function Start() {
 	
 }
 
+function Update () {
+
+	if (start) {
+		if (flag) {
+			movementup();
+		} else {
+			movementdown();
+		}
+		transform.position.x = rotate(tmpx,tmpy,1);
+		transform.position.y = rotate(tmpx,tmpy,2);
+	} 	
+}
+
 function rotate(u: float, v: float, k:int){
 	//quay x
 	if (k ==1) {
@@ -36,17 +48,6 @@ function rotate(u: float, v: float, k:int){
 	else {
 		return v*Mathf.Cos(a) + u*Mathf.Sin(a)-(posy*Mathf.Cos(a) + posx*Mathf.Sin(a))+posy;
 	}
-}
-
-function Update () {
-	if (flag) {
-		movementup();
-	} else {
-		movementdown();
-	}
-	transform.position.x = rotate(tmpx,tmpy,1);
-	transform.position.y = rotate(tmpx,tmpy,2);
-	
 }
 
 
