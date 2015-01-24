@@ -109,6 +109,9 @@ MonoBehaviour:
   g: .200000003
   onair: 1
   character: {fileID: 790705344}
+  movedir: 1
+  setdir: 0
+  drop: 0
 --- !u!50 &552614372
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -164,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 552614370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 320, y: -30, z: 0}
+  m_LocalPosition: {x: 500, y: 100, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -345,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveLeft: 276
   moveRight: 275
-  space: 0
+  space: 32
   speedx: 10
   speedy: 10
   g: 1

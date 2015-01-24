@@ -5,9 +5,22 @@ public var speedy : float = 2;
 public var g: float = 0.2;
 public var onair : boolean = true;
 public var character : GameObject;
+public var movedir : float = 1;
+public var setdir : boolean = false;
+public var drop: boolean = false;
 
 function Update () {
-	movement();	
+	if (!drop) {
+		transform.position.y  -= 5;
+	} else {
+		if (!setdir) {	
+			if (character.transform.position.x < transform.position.x) {
+				movedir = -1;
+			}
+			setdir = true;
+		}
+		movement();
+	}
 }
 
 function jump(){
@@ -16,12 +29,7 @@ function jump(){
 }
 
 function movement(){
-	
-	if (character.transform.position.x < transform.position.x) {
-		transform.position.x -= speedx;
-	} else {
-		transform.position.x += speedx;
-	}
+	transform.position.x += movedir * speedx;
 
 	if (onair == true){
 		speedy += -g*Time.deltaTime/0.2;
@@ -34,6 +42,7 @@ function movement(){
 function OnTriggerEnter2D (col: Collider2D) {
 	if (col.tag =="Ground"){
 		onair = false;
+		drop = true;
 		print("yo");
 	}
 }
