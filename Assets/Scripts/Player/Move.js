@@ -21,12 +21,12 @@ function jump(){
 
 function movement(){
 	if (Input.GetKey(moveLeft)){
-		transform.position.x -= speedx;		
+		transform.position.x -= speedx;	     	
 	} else if (Input.GetKey(moveRight)){
 		transform.position.x += speedx;
 	} 	
 	if (onair == true){
-		speedy += -g*Time.deltaTime/0.2;
+		speedy += -g*Time.deltaTime;
 		transform.position.y += speedy;		
 	} else {
 		jump();		
