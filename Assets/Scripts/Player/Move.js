@@ -6,6 +6,7 @@ public var jump : KeyCode;
 public var speed : float = 5;
 public var fallSpeed : float = 0;
 public var fallAccel : float = 0.5;
+public var maxJumpSpeed : float = 10.0;
 
 private var faceRight : boolean = true;
 private var onAir : boolean = true;
@@ -15,24 +16,19 @@ function Update () {
 
 	// key down
 	// move when key down
-	if (Input.GetKey(moveLeft)){
+	if (Input.GetKey(moveLeft)) {
 		transform.localPosition.x -= speed;
 		animator.SetBool("move", true);
 		if (faceRight) {
 			FlipFace();
 		}
-	} else if (Input.GetKey(moveRight)){
+	} else if (Input.GetKey(moveRight)) {
 		transform.localPosition.x += speed;
 		animator.SetBool("move", true);
 		if (!faceRight) {
 			FlipFace();
 		}
 	} 	
-
-	if (Input.GetKey(jump)) {
-		fallSpeed = -7.5;
-		onair = true;
-	}
 	
 	// key up
 	// set animation when not move
@@ -47,6 +43,37 @@ function Update () {
 			animator.SetBool("move", false);
 		}
 	}
+	
+	// jump
+	if (Input.GetKey(jump) && !onAir) {
+		fallSpeed = -maxJumpSpeed;
+		onAir = true;
+		animator.SetBool("jump", true);
+	}
+	
+	if (onAir) {
+		var collider = GetComponent(BoxCollider2D);
+		var halfCol = collider.size.y * 0.5f * transform.localScale.y;
+		var dir = -Vector2.up;
+		var origin : Vector2;
+		var dist : float;
+		var castObj : RaycastHit2D;
+		
+		fallSpeed += fallAccel;
+		
+		origin = new Vector2(transform.localPosition.x, transform.localPosition.y - halfCol);
+		dist = Mathf.Abs(fallSpeed);
+		castObj = Physics2D.Raycast(origin, dir, dist, 1 << 12);		
+		transform.localPosition.y -= fallSpeed;
+		
+		if (castObj.transform && fallSpeed > 0) {
+			var hitCollider = castObj.collider.GetComponent(BoxCollider2D);
+			var hitHalfCol  = hitCollider.size.y * 0.5f * castObj.transform.localScale.y;
+			var hitTop      = castObj.transform.localPosition.y + hitHalfCol;
+			
+			transform.localPosition.y -= transform.localPosition.y - halfCol - hitTop;
+		}
+	}
 }
 
 function FlipFace() {
@@ -56,8 +83,10 @@ function FlipFace() {
 	transform.localScale.x = scaleX;
 }
 
-function OnTriggerEnter2D (other: Collider2D) {
-	if (col.tag == "Ground"){
-		onair = false;
+function OnTriggerEnter2D (collider : Collider2D) {
+	var animator: Animator = GetComponent(Animator);
+	if (collider.tag == "Ground") {
+		onAir = false;
+		animator.SetBool("jump", false);
 	}
 }
