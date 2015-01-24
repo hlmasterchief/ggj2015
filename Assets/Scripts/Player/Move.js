@@ -17,13 +17,13 @@ function Update () {
 	// key down
 	// move when key down
 	if (Input.GetKey(moveLeft)) {
-		transform.localPosition.x -= speed;
+		transform.localPosition.x -= speed * Time.deltaTime / Time.fixedDeltaTime;
 		animator.SetBool("move", true);
 		if (faceRight) {
 			FlipFace();
 		}
 	} else if (Input.GetKey(moveRight)) {
-		transform.localPosition.x += speed;
+		transform.localPosition.x += speed * Time.deltaTime / Time.fixedDeltaTime;
 		animator.SetBool("move", true);
 		if (!faceRight) {
 			FlipFace();
@@ -64,7 +64,7 @@ function Update () {
 		origin = new Vector2(transform.localPosition.x, transform.localPosition.y - halfCol);
 		dist = Mathf.Abs(fallSpeed);
 		castObj = Physics2D.Raycast(origin, dir, dist, 1 << 12);		
-		transform.localPosition.y -= fallSpeed;
+		transform.localPosition.y -= fallSpeed * Time.deltaTime / Time.fixedDeltaTime;
 		
 		if (castObj.transform && fallSpeed > 0) {
 			var hitCollider = castObj.collider.GetComponent(BoxCollider2D);
