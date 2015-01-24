@@ -5,6 +5,7 @@ public var vix : float = 5;
 public var viy : float = 5;
 public var ax: float = 0.1;
 public var ay: float = 1;
+public var shoot : KeyCode;
 var tmpx : float; 
 var tmpy : float;
 var posx : float;
@@ -13,16 +14,11 @@ var angle: float = 30;
 var a: float;
 
 var flag: boolean = true;
-var start: boolean = true;
+var start: boolean = false;
+
+public var character : GameObject;
 
 function Start() {
-	vx = vix;
-	vy = viy;	
-	tmpx = transform.position.x;
-	tmpy = transform.position.y;
-	posx = tmpx;
-	posy = tmpy;
-	a = angle*3.1416/180;
 	
 }
 
@@ -36,7 +32,30 @@ function Update () {
 		}
 		transform.position.x = rotate(tmpx,tmpy,1);
 		transform.position.y = rotate(tmpx,tmpy,2);
-	} 	
+	} else {
+		if (Input.GetKey(shoot)){
+			vx = vix;
+			vy = viy;
+
+			var mouse = Input.mousePosition;
+			mouse.z = 0;
+			mouse = Camera.main.ScreenToWorldPoint(mouse);
+
+			transform.position.x = character.transform.position.x;
+			transform.position.y = character.transform.position.y;
+
+			tmpx = transform.position.x;
+			tmpy = transform.position.y;
+			posx = tmpx;
+			posy = tmpy;
+
+			a = Mathf.Atan((mouse.y - posy) / (mouse.x - posx));
+			if ((mouse.x - posx) < 0){
+				a = Mathf.PI + a;
+			}
+			start = true;
+		}
+	}
 }
 
 function rotate(u: float, v: float, k:int){
