@@ -1,18 +1,19 @@
 ﻿#pragma strict
 
-public var movedir : float = 1;
 public var speed : float = 2;
-public var top : float = 350;
-public var bot : float = 100;
+public var distance : float = 200;
 public var item : GameObject;
 
+private var rad : float;
+private var first : float;
+
 function Start () {
-	movedir = Random.Range(0,2)*2-1;
+	rad = Random.Range(0,Mathf.PI * 2);
+	first = transform.position.y;
+	transform.position.y = first + Mathf.Sin(rad) * distance;
 }
 
 function Update () {
-	if ((transform.position.y >= top) || (transform.position.y <= bot)) {
-		movedir *= -1;
-	}
-	transform.position.y += movedir * speed;
+	rad = (rad + Time.deltaTime * speed) % (Mathf.PI * 2);
+	transform.position.y = first + Mathf.Sin(rad) * distance;
 }
