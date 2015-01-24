@@ -6,7 +6,7 @@ public var speed : float = 5;
 
 private var faceRight : boolean = true;
 
-function FixedUpdate () {
+function Update () {
 	var animator: Animator = GetComponent(Animator);
 
 	// key down
