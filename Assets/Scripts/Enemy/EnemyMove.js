@@ -1,9 +1,9 @@
 ﻿#pragma strict
 
-public var speed : float = 2.0f;
+public var speed : float = 3.0f;
 public var fallSpeed : float = 0.0f;
-public var fallAccel : float = 0.5f;
-public var maxJumpSpeed : float = 15.0f;
+public var fallAccel : float = 0.75f;
+public var maxJumpSpeed : float = 12.0f;
 public var delayJump : float = 120.0f;
 public var maxDelayJump : float = 120.0f;
 public var jumpDirection : int = 1; // positive = right

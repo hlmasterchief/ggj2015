@@ -5,7 +5,7 @@ public var moveRight : KeyCode;
 public var jump : KeyCode;
 public var speed : float = 5;
 public var fallSpeed : float = 0;
-public var fallAccel : float = 0.5;
+public var fallAccel : float = 0.75;
 public var maxJumpSpeed : float = 10.0;
 
 private var faceRight : boolean = true;
