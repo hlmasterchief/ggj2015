@@ -677,6 +677,7 @@ MonoBehaviour:
   viy: 10
   ax: .100000001
   ay: 1
+  shoot: 0
   tmpx: 0
   tmpy: 0
   posx: 0
@@ -685,6 +686,7 @@ MonoBehaviour:
   a: 0
   flag: 1
   start: 1
+  character: {fileID: 0}
 --- !u!61 &1429061276
 BoxCollider2D:
   m_ObjectHideFlags: 0

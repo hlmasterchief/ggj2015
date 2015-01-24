@@ -72,6 +72,7 @@ function Update () {
 			var hitTop      = castObj.transform.localPosition.y + hitHalfCol;
 			
 			transform.localPosition.y -= transform.localPosition.y - halfCol - hitTop;
+			onAir = false;
 		}
 	}
 }
