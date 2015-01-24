@@ -2,9 +2,13 @@
 
 public var moveLeft : KeyCode;
 public var moveRight : KeyCode;
+public var jump : KeyCode;
 public var speed : float = 5;
+public var fallSpeed : float = 0;
+public var fallAccel : float = 0.5;
 
 private var faceRight : boolean = true;
+private var onAir : boolean = true;
 
 function Update () {
 	var animator: Animator = GetComponent(Animator);
@@ -24,6 +28,11 @@ function Update () {
 			FlipFace();
 		}
 	} 	
+
+	if (Input.GetKey(jump)) {
+		fallSpeed = -7.5;
+		onair = true;
+	}
 	
 	// key up
 	// set animation when not move
@@ -48,5 +57,7 @@ function FlipFace() {
 }
 
 function OnTriggerEnter2D (other: Collider2D) {
-	
+	if (col.tag == "Ground"){
+		onair = false;
+	}
 }
