@@ -112,3 +112,8 @@ function OnTriggerEnter2D (collider : Collider2D) {
 		animator.SetBool("jump", false);
 	}
 }
+
+public function Death () {
+	print("a a a a  aaaaaaaaaaaaaaaaaaaa a a");
+	Destroy(gameObject);
+}
