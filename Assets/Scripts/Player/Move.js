@@ -7,6 +7,7 @@ public var speed : float = 5;
 public var fallSpeed : float = 0;
 public var fallAccel : float = 0.75;
 public var maxJumpSpeed : float = 10.0;
+public var heart: GameObject;
 
 private var faceRight : boolean = true;
 private var onAir : boolean = true;
@@ -106,9 +107,20 @@ function FlipFace() {
 
 function OnTriggerEnter2D (collider : Collider2D) {
 	var animator: Animator = GetComponent(Animator);
+	var heartObj : GameObject; 
 	if (collider.tag == "Ground") {
 		onAir = false;
 		animator.SetBool("jump", false);
+	}
+	
+	if (collider.tag == "Enemies"){
+		Death();
+	}
+	
+	if (collider.tag == "Items"){
+		Destroy(collider.gameObject);		
+		heartObj = Instantiate(heart, new Vector3 (transform.localPosition.x+10, transform.localPosition.y+30, 0), Quaternion.identity);
+		heartObj.transform.parent = transform;
 	}
 }
 
