@@ -18,10 +18,10 @@ function FixedUpdate () {
 		var random : int = Random.Range(0, boxes.length);
 		var box : GameObject = boxes[random];
 		var base = GameObject.Find("Base");
-		var pos : Vector3 = new Vector3(Random.Range(-base.collider2D.bounds.max.x, base.collider2D.bounds.max.x), 
-										base.collider2D.bounds.max.y + box.collider2D.bounds.extents.y + 4, 
-										0);
+		var xIndex : int;
+		var pos : Vector3;
 		var obj : GameObject;
+		var maxCol : int;
 		var script : BoxMove;
 		
 		if (pos.x < 0) {
@@ -31,10 +31,15 @@ function FixedUpdate () {
 		}
 		
 		delay = Random.Range(1, maxDelay);
-		obj = Instantiate(box, pos, Quaternion.identity);
+		obj = Instantiate(box);
+		
+		maxCol = Mathf.Ceil((base.collider2D.bounds.extents.x * 2 * base.transform.localScale.x)
+											/ (obj.collider2D.bounds.extents.x * 2 * obj.transform.localScale.x + 6));
+		xIndex = Random.Range(-maxCol / 2, maxCol / 2);
+		obj.transform.position.x = (obj.collider2D.bounds.extents.x * 2 * box.transform.localScale.x + 6) / 2 * xIndex;
 		
 		script = obj.GetComponent(BoxMove);
-		script.distance = Random.Range(20, (base.collider2D.bounds.max.y - script.getFirst() - box.collider2D.bounds.extents.y) / 2);
+		script.distance = Random.Range(20, (base.collider2D.bounds.max.y - script.getFirst() - obj.collider2D.bounds.extents.y) / 2);
 	}
 	
 	delay -= Time.deltaTime;
