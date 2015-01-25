@@ -19,7 +19,7 @@ function Update () {
 		oldHighscore = highscore;
 		
 		for (var child : Transform in transform) {
-			GameObject.Destroy(child.gameObject);
+			Destroy(child.gameObject);
 		}
 
 		if (num == 0) {
