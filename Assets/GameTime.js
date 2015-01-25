@@ -1,26 +1,24 @@
 ﻿#pragma strict
 
-public var highscore : int = 0;
+public var time : float = 120;
 public var digiWidth : int = 24;
 public var digits : GameObject[] = new GameObject[10];
 
-private var oldHighscore : int = -1;
+private var oldTime : int = -1;
 
 function Start () {
-	
+
 }
 
 function Update () {
-	var data = GameObject.Find("Data");
-	var dataScript = data.GetComponent(Data);
-	highscore = dataScript.highscore;
-	
-	if (highscore != oldHighscore) {
+	time -= Time.deltaTime;
+
+	if (Mathf.Floor(time) != oldTime) {
 		var n : int;
 		var obj : GameObject;
 		var i : int = 0;
-		var num : int = highscore;
-		oldHighscore = highscore;
+		var num : int = Mathf.Floor(time);
+		oldTime = time;
 		
 		for (var child : Transform in transform) {
 			Destroy(child.gameObject);
@@ -46,5 +44,9 @@ function Update () {
 			
 			i += 1;
 		}
+	}
+	
+	if (time <= 0) {
+		Application.LoadLevel("gameover");
 	}
 }

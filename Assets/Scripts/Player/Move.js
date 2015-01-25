@@ -8,6 +8,7 @@ public var fallSpeed : float = 0;
 public var fallAccel : float = 0.75;
 public var maxJumpSpeed : float = 10.0;
 public var heart: GameObject;
+public var goldScore : int = 100;
 
 private var faceRight : boolean = true;
 private var onAir : boolean = true;
@@ -108,6 +109,9 @@ function FlipFace() {
 function OnTriggerEnter2D (collider : Collider2D) {
 	var animator: Animator = GetComponent(Animator);
 	var heartObj : GameObject; 
+	var data = GameObject.Find("Data");
+	var dataScript = data.GetComponent(Data);
+
 	if (collider.tag == "Ground") {
 		onAir = false;
 		animator.SetBool("jump", false);
@@ -121,10 +125,10 @@ function OnTriggerEnter2D (collider : Collider2D) {
 		Destroy(collider.gameObject);		
 		heartObj = Instantiate(heart, new Vector3 (transform.localPosition.x+10, transform.localPosition.y+30, 0), Quaternion.identity);
 		heartObj.transform.parent = transform;
+		dataScript.highscore += goldScore;
 	}
 }
 
 public function Death () {
-	print("a a a a  aaaaaaaaaaaaaaaaaaaa a a");
-	Destroy(gameObject);
+	Application.LoadLevel("gameover");
 }
