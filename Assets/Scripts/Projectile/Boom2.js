@@ -4,7 +4,9 @@ public var vy : float ;
 public var vix : float = 5;
 public var viy : float = 5;
 public var ax: float = 0.1;
-public var ay: float = 1;
+public var baseay: float = 1.5;
+public var pow: float = 1;
+public var ay: float;
 public var shoot : KeyCode;
 var tmpx : float; 
 var tmpy : float;
@@ -19,7 +21,7 @@ var start: boolean = false;
 public var character : GameObject;
 
 function Start() {
-	
+	ay = baseay/pow;
 }
 
 function Update () {
@@ -74,10 +76,10 @@ function movementup(){
 	tmpx +=vx;
 	tmpy +=vy;	 		
 	vy -=ay;
-	
-	if ((Mathf.Abs(tmpy - posy) <0.001)){
-		vy = - 1.5*viy;
-		ay = -0.2;
+	print(Mathf.Abs(tmpy - posy)*Time.deltaTime);
+	if ((Mathf.Abs(tmpy - posy)*Time.deltaTime <0.1)){
+		vy = - viy;
+		ay = -(1/1.5)*ay;
 		vx=-vx;
 		flag = false;
 	}	
@@ -89,11 +91,5 @@ function movementdown(){
 	tmpy +=vy;	 		
 	vy -=ay;
 	
-	if ((Mathf.Abs(tmpy - posy) <0.01)){
-		vy =  viy;
-		vx=-vx;
-		ay = 1;		
-		flag = false;
-	}	
 }
 
