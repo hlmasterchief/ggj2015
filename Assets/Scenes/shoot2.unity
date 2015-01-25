@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boomerang: {fileID: 168482, guid: 9af9b5c967cd046619d326041447e0ff, type: 2}
   shoot: 323
+  delay: .5
 --- !u!1 &588611976
 GameObject:
   m_ObjectHideFlags: 0

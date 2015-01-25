@@ -2,6 +2,7 @@
 
 var boomerang : GameObject;
 public var shoot : KeyCode;
+public var delay : float = 0.5;
 private var bmr : GameObject;
 private var bmrc : Boomerang;
 
@@ -15,6 +16,10 @@ function Update () {
 		if ((Mathf.Abs(bmrc.transform.position.x) > base.collider2D.bounds.max.x) || (bmrc.transform.position.y < -200) || (bmrc.transform.position.y > base.collider2D.bounds.max.y)) {	
 			 Destroy(bmr);
 		 }
+		 if (Input.GetKeyUp(shoot)){
+		 	bmrc.start = true;
+		 }
+		 
 	} else {
 		if (Input.GetKeyDown(shoot)){
 
@@ -36,7 +41,20 @@ function Update () {
 			if ((mouse.x - bmrc.posx) < 0){
 				bmrc.a = Mathf.PI + bmrc.a;
 			}
-			bmrc.start = true;
+			
+		}
+	}
+}
+
+function FixedUpdate() {
+	if (bmr){
+		if (!bmrc.start){
+			delay -= Time.deltaTime;
+			if ((delay <= 0) && (bmrc.power <=4)) {
+				bmrc.power += 1;
+				print(bmrc.power);
+				delay = 0.5;
+			}
 		}
 	}
 }
