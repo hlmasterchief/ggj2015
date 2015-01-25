@@ -12,7 +12,10 @@ private var onAir : boolean = true;
 private var onJump : boolean = false;
 private var preJump : boolean = false;
 
-function Update () {
+function Update() {
+}
+
+function FixedUpdate () {
 	var animator: Animator = GetComponent(Animator);
 	
 	if (delayJump <= 0 && !preJump) {
@@ -34,7 +37,7 @@ function Update () {
 		dist = Mathf.Abs(fallSpeed);
 		castObj = Physics2D.Raycast(origin, dir, dist, 1 << 12);		
 		
-		transform.localPosition.y -= fallSpeed * Time.deltaTime / Time.fixedDeltaTime;
+		transform.localPosition.y -= fallSpeed;
 		
 		if (castObj.transform && fallSpeed > 0) {
 			var hitTop = castObj.transform.localPosition.y + castObj.collider.bounds.extents.y;
@@ -46,11 +49,9 @@ function Update () {
 	}
 	
 	if (onJump) {
-		transform.localPosition.x += speed * jumpDirection * Time.deltaTime / Time.fixedDeltaTime;
+		transform.localPosition.x += speed * jumpDirection;
 	}
-}
-
-function FixedUpdate() {
+	
 	if (!onJump && !onAir) {
 		delayJump -= 1;
 	}
