@@ -25,7 +25,7 @@ function FixedUpdate () {
 	
 	if (onAir) {
 		var collider = GetComponent(Collider2D);
-		var bottomSelf : float = collider.bounds.max.y;
+		var bottomSelf : float = collider.bounds.min.y;
 		var dir = -Vector2.up;
 		var origin : Vector2;
 		var dist : float;

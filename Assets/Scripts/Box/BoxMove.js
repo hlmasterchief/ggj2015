@@ -6,14 +6,28 @@ public var item : GameObject;
 
 private var rad : float;
 private var first : float;
+private var init : boolean = true;
 
 function Start () {
-	rad = Random.Range(0,Mathf.PI * 2);
-	first = transform.position.y;
-	transform.position.y = first + Mathf.Sin(rad) * distance;
+	var base = GameObject.Find("Base");
+
+	rad = 0;
+	first = Random.Range(0, base.collider2D.bounds.max.y - collider2D.bounds.extents.y - 16);
+}
+
+function getFirst() {
+	return first;
 }
 
 function FixedUpdate () {
-	rad = (rad + Time.deltaTime * speed) % (Mathf.PI * 2);
-	transform.position.y = first + Mathf.Sin(rad) * distance;
+	if (init) {
+		transform.position.y -=	speed;
+		if (transform.position.y <= first) {
+			transform.position.y += (first - transform.position.y);
+			init = false;
+		}
+	} else {
+		rad = (rad + Time.deltaTime * speed) % (Mathf.PI * 2);
+		transform.position.y = first + Mathf.Sin(rad) * distance;
+	}
 }
