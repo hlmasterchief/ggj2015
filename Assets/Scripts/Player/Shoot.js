@@ -2,12 +2,13 @@
 
 var boomerang : GameObject;
 public var shoot : KeyCode;
-public var delay : float = 0.5;
+public var maxDelay : float = 0.5;
 private var bmr : GameObject;
 private var bmrc : Boomerang;
+private var delay : float = 0;
 
 function Start () {
-
+	delay = maxDelay;
 }
 
 function Update () {
@@ -16,7 +17,8 @@ function Update () {
 		if ((Mathf.Abs(bmrc.transform.position.x) > base.collider2D.bounds.max.x) || (bmrc.transform.position.y < -200) || (bmrc.transform.position.y > base.collider2D.bounds.max.y)) {	
 			 Destroy(bmr);
 		 }
-		 if (Input.GetKeyUp(shoot)){
+		 if (Input.GetKeyUp(shoot)) {
+		 	bmr.renderer.enabled = true;
 		 	bmrc.start = true;
 		 }
 		 
@@ -29,10 +31,12 @@ function Update () {
 			
 
 			bmr = Instantiate(boomerang, Vector3 (0, 0, 0), Quaternion.identity);
-			bmrc = bmr.GetComponent("Boomerang");
+			bmrc = bmr.GetComponent(Boomerang);
+			
+			bmr.renderer.enabled = false;
 
-			bmrc.transform.position.x = transform.position.x;
-			bmrc.transform.position.y = transform.position.y;
+			bmr.transform.position.x = transform.position.x;
+			bmr.transform.position.y = transform.position.y;
 			
 			bmrc.posx = transform.position.x;
 			bmrc.posy = transform.position.y;
@@ -41,6 +45,8 @@ function Update () {
 			if ((mouse.x - bmrc.posx) < 0){
 				bmrc.a = Mathf.PI + bmrc.a;
 			}
+			
+			delay = maxDelay;
 			
 		}
 	}
