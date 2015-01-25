@@ -12,6 +12,7 @@ GameObject:
   - 95: {fileID: 9539598}
   - 61: {fileID: 6139598}
   - 50: {fileID: 5039598}
+  - 114: {fileID: 11494160}
   m_Layer: 13
   m_Name: Coin
   m_TagString: Items
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.29173851, y: -4.33557367, z: 0}
+  m_LocalPosition: {x: -41.1162338, y: -36.1600876, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,6 +73,19 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11494160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c8064f616834e81b18ba6e4194865f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 0
+  fallAccel: .75
 --- !u!212 &21239598
 SpriteRenderer:
   m_ObjectHideFlags: 1
