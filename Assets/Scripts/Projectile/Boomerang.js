@@ -1,41 +1,37 @@
-﻿#pragma strict
-public var vx : float ;
-public var vy : float ;
-public var vix : float = 5;
-public var viy : float = 5;
-public var ax: float = 0.1;
-public var ay: float = 1;
-public var shoot : KeyCode;
-var tmpx : float; 
-var tmpy : float;
-var posx : float;
-var posy :float;
-var angle: float = 30;
-var a: float;
+#pragma strict
 
-var flag: boolean = true;
+public var shoot : KeyCode;
+
+var posx : float;
+var posy : float;
+var a: float = 0;
+
+var flag: boolean = false;
 var start: boolean = false;
 
 public var character : GameObject;
+public var speedBase : float = 10;
+public var maxBase : float = 200;
+public var power : float = 1;
 
 function Start() {
 	
 }
 
 function Update () {
-
 	if (start) {
-		if (flag) {
-			movementup();
+		if (!flag) {
+			transform.position.x += speedBase * Mathf.Cos(a);
+			transform.position.y += speedBase * Mathf.Sin(a);
+			if (Mathf.Abs(transform.position.x - posx) > Mathf.Abs(maxBase * Mathf.Cos(a) * power)) { //Max
+				flag = true;
+			}
 		} else {
-			movementdown();
+			transform.position.x -= speedBase * Mathf.Cos(a);
+			transform.position.y -= speedBase * Mathf.Sin(a);
 		}
-		transform.position.x = rotate(tmpx,tmpy,1);
-		transform.position.y = rotate(tmpx,tmpy,2);
 	} else {
 		if (Input.GetKey(shoot)){
-			vx = vix;
-			vy = viy;
 
 			var mouse = Input.mousePosition;
 			mouse.z = 0;
@@ -44,10 +40,8 @@ function Update () {
 			transform.position.x = character.transform.position.x;
 			transform.position.y = character.transform.position.y;
 
-			tmpx = transform.position.x;
-			tmpy = transform.position.y;
-			posx = tmpx;
-			posy = tmpy;
+			posx = transform.position.x;
+			posy = transform.position.y;
 
 			a = Mathf.Atan((mouse.y - posy) / (mouse.x - posx));
 			if ((mouse.x - posx) < 0){
@@ -57,43 +51,3 @@ function Update () {
 		}
 	}
 }
-
-function rotate(u: float, v: float, k:int){
-	//quay x
-	if (k ==1) {
-		return u*Mathf.Cos(a) - v*Mathf.Sin(a)-(posx*Mathf.Cos(a) - posy*Mathf.Sin(a))+posx;
-	}
-	//quay y
-	else {
-		return v*Mathf.Cos(a) + u*Mathf.Sin(a)-(posy*Mathf.Cos(a) + posx*Mathf.Sin(a))+posy;
-	}
-}
-
-
-function movementup(){
-	tmpx +=vx;
-	tmpy +=vy;	 		
-	vy -=ay;
-	
-	if ((Mathf.Abs(tmpy - posy) <0.001)){
-		vy = - viy;
-		ay = -1;
-		vx=-vx;
-		flag = false;
-	}	
-}
-
-
-function movementdown(){
-	tmpx +=vx;
-	tmpy +=vy;	 		
-	vy -=ay;
-	
-	if ((Mathf.Abs(tmpy - posy) <0.01)){
-		vy =  viy;
-		vx=-vx;
-		ay = 1;		
-		flag = true;
-	}	
-}
-
