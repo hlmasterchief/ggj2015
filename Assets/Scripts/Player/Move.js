@@ -17,16 +17,17 @@ function Update () {
 
 function FixedUpdate() {
 	var animator: Animator = GetComponent(Animator);
+	var base = GameObject.Find("Base");
 	
 	// key down
 	// move when key down
-	if (Input.GetKey(moveLeft)) {
+	if (Input.GetKey(moveLeft) && collider2D.bounds.min.x > base.collider2D.bounds.min.x) {
 		transform.localPosition.x -= speed * Time.deltaTime / Time.fixedDeltaTime;
 		animator.SetBool("move", true);
 		if (faceRight) {
 			FlipFace();
 		}
-	} else if (Input.GetKey(moveRight)) {
+	} else if (Input.GetKey(moveRight) && collider2D.bounds.max.x < base.collider2D.bounds.max.x) {
 		transform.localPosition.x += speed * Time.deltaTime / Time.fixedDeltaTime;
 		animator.SetBool("move", true);
 		if (!faceRight) {
@@ -43,6 +44,18 @@ function FixedUpdate() {
 	}
 	
 	if (Input.GetKeyUp(moveRight)) {
+		if (faceRight) {
+			animator.SetBool("move", false);
+		}
+	}
+	
+	if (collider2D.bounds.min.x <= base.collider2D.bounds.min.x) {
+		if (!faceRight) {
+			animator.SetBool("move", false);
+		}
+	}
+	
+	if (collider2D.bounds.max.x >= base.collider2D.bounds.max.x) {
 		if (faceRight) {
 			animator.SetBool("move", false);
 		}
