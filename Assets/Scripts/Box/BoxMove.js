@@ -13,7 +13,7 @@ function Start () {
 	transform.position.y = first + Mathf.Sin(rad) * distance;
 }
 
-function Update () {
+function FixedUpdate () {
 	rad = (rad + Time.deltaTime * speed) % (Mathf.PI * 2);
 	transform.position.y = first + Mathf.Sin(rad) * distance;
 }

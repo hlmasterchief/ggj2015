@@ -12,8 +12,12 @@ private var faceRight : boolean = true;
 private var onAir : boolean = true;
 
 function Update () {
-	var animator: Animator = GetComponent(Animator);
 
+}
+
+function FixedUpdate() {
+	var animator: Animator = GetComponent(Animator);
+	
 	// key down
 	// move when key down
 	if (Input.GetKey(moveLeft)) {
@@ -50,7 +54,7 @@ function Update () {
 		onAir = true;
 		animator.SetBool("jump", true);
 	}
-	
+
 	if (onAir) {
 		var collider = GetComponent(BoxCollider2D);
 		var halfCol = collider.size.y * 0.5f * transform.localScale.y;
@@ -64,7 +68,7 @@ function Update () {
 		origin = new Vector2(transform.localPosition.x, transform.localPosition.y - halfCol);
 		dist = Mathf.Abs(fallSpeed);
 		castObj = Physics2D.Raycast(origin, dir, dist, 1 << 12);		
-		transform.localPosition.y -= fallSpeed * Time.deltaTime / Time.fixedDeltaTime;
+		transform.localPosition.y -= fallSpeed;
 		
 		if (castObj.transform && fallSpeed > 0) {
 			var hitCollider = castObj.collider.GetComponent(BoxCollider2D);
