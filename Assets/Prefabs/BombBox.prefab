@@ -13,6 +13,7 @@ GameObject:
   - 61: {fileID: 6127606}
   - 50: {fileID: 5027606}
   - 114: {fileID: 11427606}
+  - 114: {fileID: 11400000}
   m_Layer: 10
   m_Name: BombBox
   m_TagString: Boxes
@@ -73,6 +74,18 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4142334764bf144f90e1cab57d377d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 120
 --- !u!114 &11427606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,7 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   distance: 200
-  item: {fileID: 0}
+  item:
+  - {fileID: 0}
 --- !u!212 &21227606
 SpriteRenderer:
   m_ObjectHideFlags: 1

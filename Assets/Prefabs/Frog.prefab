@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6126534}
   - 50: {fileID: 5026534}
   - 95: {fileID: 9526534}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Frog
   m_TagString: Enemies
   m_Icon: {fileID: 0}
