@@ -11,6 +11,10 @@ public var maxJumpSpeed : float = 10.0;
 private var faceRight : boolean = true;
 private var onAir : boolean = true;
 
+function Start() {
+
+}
+
 function Update () {
 
 }
