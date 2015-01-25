@@ -4,6 +4,7 @@ var boomerang : GameObject;
 public var shoot : KeyCode;
 public var maxDelay : float = 0.5;
 public var sprites : Sprite[] = new Sprite[6];
+public var throwSE : AudioClip;
 
 private var bmr : GameObject;
 private var bmrc : Boomerang;
@@ -26,10 +27,13 @@ function Update () {
 			 gaugeRenderer.sprite = sprites[0];
 		 }
 		 if (Input.GetKeyUp(shoot)) {
+		 	bmr.transform.position.x = transform.position.x;
+			bmr.transform.position.y = transform.position.y;
 		 	bmr.renderer.enabled = true;
 		 	bmrc.start = true;
 		 	gauge.renderer.enabled = false;
 		 	gaugeRenderer.sprite = sprites[0];
+		 	audio.PlayOneShot(throwSE);
 		 }
 		 
 	} else {

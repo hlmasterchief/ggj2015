@@ -10,6 +10,10 @@ public var maxJumpSpeed : float = 10.0;
 public var heart: GameObject;
 public var goldScore : int = 100;
 
+public var coinSE : AudioClip;
+public var jumpSE : AudioClip;
+public var deathSE : AudioClip;
+
 private var faceRight : boolean = true;
 private var onAir : boolean = true;
 
@@ -71,6 +75,7 @@ function FixedUpdate() {
 		fallSpeed = -maxJumpSpeed;
 		onAir = true;
 		animator.SetBool("jump", true);
+		audio.PlayOneShot(jumpSE);
 	}
 
 	if (onAir) {
@@ -123,12 +128,15 @@ function OnTriggerEnter2D (collider : Collider2D) {
 	
 	if (collider.tag == "Items"){
 		Destroy(collider.gameObject);		
-		heartObj = Instantiate(heart, new Vector3 (transform.localPosition.x+10, transform.localPosition.y+30, 0), Quaternion.identity);
+		heartObj = Instantiate(heart, new Vector3 (transform.localPosition.x+16, transform.localPosition.y+50, 0), Quaternion.identity);
 		heartObj.transform.parent = transform;
 		dataScript.highscore += goldScore;
+		
+		audio.PlayOneShot(coinSE);
 	}
 }
 
 public function Death () {
 	Application.LoadLevel("gameover");
+	audio.PlayOneShot(deathSE);
 }

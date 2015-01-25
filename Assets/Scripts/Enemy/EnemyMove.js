@@ -12,11 +12,21 @@ private var onAir : boolean = true;
 private var onJump : boolean = false;
 private var preJump : boolean = false;
 
+function Start() {
+	var r = Random.Range(0,10);
+	if (r >= 5) {
+		jumpDirection = 1;
+	} else {
+		jumpDirection = -1;
+	}
+}
+
 function Update() {
 }
 
 function FixedUpdate () {
 	var animator: Animator = GetComponent(Animator);
+	var base = GameObject.Find("Base");
 	
 	if (delayJump <= 0 && !preJump) {
 		preJump = true;
@@ -54,6 +64,14 @@ function FixedUpdate () {
 	
 	if (!onJump && !onAir) {
 		delayJump -= 1;
+	}
+	
+	if (collider2D.bounds.max.x >= base.collider2D.bounds.max.x + 48) {
+		Destroy(gameObject);
+	}
+	
+	if (collider2D.bounds.min.x <= base.collider2D.bounds.min.x - 48) {
+		Destroy(gameObject);
 	}
 }
 

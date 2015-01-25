@@ -140,6 +140,7 @@ GameObject:
   - 61: {fileID: 519584528}
   - 50: {fileID: 519584529}
   - 114: {fileID: 519584530}
+  - 82: {fileID: 519584531}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -158,15 +159,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe821f0944eb4941b26f3114d71fb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveLeft: 276
-  moveRight: 275
-  jump: 32
+  moveLeft: 97
+  moveRight: 100
+  jump: 119
   speed: 5
   fallSpeed: 0
   fallAccel: .75
   maxJumpSpeed: 10
   heart: {fileID: 114638, guid: c0bd6836420224097804c8e51928e598, type: 2}
   goldScore: 100
+  coinSE: {fileID: 8300000, guid: 2b22dcd80886b499b8d779c166561b65, type: 3}
+  jumpSE: {fileID: 8300000, guid: f443bac9721dd4f648b713aad5245508, type: 3}
+  deathSE: {fileID: 8300000, guid: 6f9df49631aa143af8b2f294b14296cf, type: 3}
 --- !u!95 &519584525
 Animator:
   serializedVersion: 3
@@ -264,6 +268,65 @@ MonoBehaviour:
   - {fileID: 21300006, guid: c3b895e63f8424d0da964c8fd7e7572c, type: 3}
   - {fileID: 21300008, guid: c3b895e63f8424d0da964c8fd7e7572c, type: 3}
   - {fileID: 21300010, guid: c3b895e63f8424d0da964c8fd7e7572c, type: 3}
+  throwSE: {fileID: 8300000, guid: be1255638fdc646ddad2dae0952b6f6d, type: 3}
+--- !u!82 &519584531
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519584523}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 255
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &588611976
 GameObject:
   m_ObjectHideFlags: 0
