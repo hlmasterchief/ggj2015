@@ -30,24 +30,5 @@ function Update () {
 			transform.position.x -= speedBase * Mathf.Cos(a);
 			transform.position.y -= speedBase * Mathf.Sin(a);
 		}
-	} else {
-		if (Input.GetKey(shoot)){
-
-			var mouse = Input.mousePosition;
-			mouse.z = 0;
-			mouse = Camera.main.ScreenToWorldPoint(mouse);
-
-			transform.position.x = character.transform.position.x;
-			transform.position.y = character.transform.position.y;
-
-			posx = transform.position.x;
-			posy = transform.position.y;
-
-			a = Mathf.Atan((mouse.y - posy) / (mouse.x - posx));
-			if ((mouse.x - posx) < 0){
-				a = Mathf.PI + a;
-			}
-			start = true;
-		}
 	}
 }

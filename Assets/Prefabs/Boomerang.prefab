@@ -84,20 +84,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4b328d1698d444786f8a38df6e7d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vx: 0
-  vy: 0
-  vix: 15
-  viy: 10
-  ax: .100000001
-  ay: 1
-  tmpx: 0
-  tmpy: 0
+  shoot: 0
   posx: 0
   posy: 0
-  angle: 30
   a: 0
-  flag: 1
-  start: 1
+  flag: 0
+  start: 0
+  character: {fileID: 0}
+  speedBase: 10
+  maxBase: 200
+  power: 1
 --- !u!212 &21268482
 SpriteRenderer:
   m_ObjectHideFlags: 1
