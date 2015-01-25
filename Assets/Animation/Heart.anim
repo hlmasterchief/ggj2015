@@ -25,6 +25,8 @@ AnimationClip:
       value: {fileID: 21300004, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
     - time: .349999994
       value: {fileID: 21300006, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
+    - time: .466666669
+      value: {fileID: 21300006, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -47,10 +49,11 @@ AnimationClip:
     - {fileID: 21300002, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
     - {fileID: 21300004, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
     - {fileID: 21300006, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
+    - {fileID: 21300006, guid: 0f9c02fa708e54b0b9371e362776b40f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .366666675
+    m_StopTime: .583333313
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -66,4 +69,11 @@ AnimationClip:
     m_Mirror: 0
   m_EditorCurves: []
   m_EulerEditorCurves: []
-  m_Events: []
+  m_Events:
+  - time: .583333313
+    functionName: DestroyFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

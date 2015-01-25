@@ -37,7 +37,7 @@ function Update () {
 			
 			obj = Instantiate(digits[d]);
 			obj.transform.parent = transform;
-			obj.transform.localPosition.x = 24 * (n - i);
+			obj.transform.localPosition.x = 24.0f * (n / 2.0f - i);
 			obj.transform.localPosition.y = 0;
 			
 			i += 1;

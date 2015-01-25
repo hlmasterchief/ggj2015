@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11402412}
   - 95: {fileID: 9537078}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11462560}
   m_Layer: 10
   m_Name: CoinBox
   m_TagString: Boxes
@@ -85,8 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d5d86195717e549b2bb5ddb160dffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: {fileID: 426534, guid: 7b185ab1a4ec947e98781988c54a0a0c, type: 2}
-  position: {x: 0, y: 0, z: 0}
 --- !u!114 &11402412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +99,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   distance: 200
-  item: {fileID: 0}
+  item:
+  - {fileID: 0}
+--- !u!114 &11462560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac44dd2453824492b56634285784415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin:
+  - {fileID: 126534, guid: 7b185ab1a4ec947e98781988c54a0a0c, type: 2}
+  - {fileID: 139598, guid: 82c6217b493274fab9857114b44e5ace, type: 2}
+  position: {x: 0, y: 0, z: 0}
 --- !u!212 &21202412
 SpriteRenderer:
   m_ObjectHideFlags: 1

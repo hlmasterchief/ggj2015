@@ -15,8 +15,8 @@ function Update () {
 
 function FixedUpdate () {
 	if (delay <= 0) {
-		var random : int = Random.Range(0, boxes.length);
-		var box : GameObject = boxes[random];
+		var random : int = Random.Range(0, 11);
+		var box : GameObject;
 		var base = GameObject.Find("Base");
 		var xIndex : int;
 		var pos : Vector3;
@@ -24,6 +24,12 @@ function FixedUpdate () {
 		var maxCol : int;
 		var script : BoxMove;
 		var boxParent : GameObject = GameObject.Find("Boxes");
+		
+		if (random > 7) {
+			box = boxes[0];
+		} else {
+			box = boxes[1];
+		}
 		
 		if (pos.x < 0) {
 			pos.x += box.collider2D.bounds.extents.x + 12;

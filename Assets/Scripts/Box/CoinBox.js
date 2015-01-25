@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-public var coin: Transform;
+public var coin: GameObject[] = new GameObject[2];
 public var position:Vector3 ;
 
 function Update(){
@@ -9,8 +9,8 @@ function Update(){
 
 function OnTriggerEnter2D (other:  Collider2D) {
 	if (other.tag =="Boomerang"){
-	 	Instantiate(coin,position, Quaternion.identity);
+		var random : int = Random.Range(0, coin.length);
+	 	Instantiate(coin[random],position, Quaternion.identity);
 		Destroy(gameObject);		
-	
 	}
 }

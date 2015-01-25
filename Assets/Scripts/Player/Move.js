@@ -16,7 +16,20 @@ function Start() {
 }
 
 function Update () {
-
+	var animator: Animator = GetComponent(Animator);
+	// key up
+	// set animation when not move
+	if (Input.GetKeyUp(moveLeft)) {
+		if (!faceRight) {
+			animator.SetBool("move", false);
+		}
+	}
+	
+	if (Input.GetKeyUp(moveRight)) {
+		if (faceRight) {
+			animator.SetBool("move", false);
+		}
+	}
 }
 
 function FixedUpdate() {
@@ -38,20 +51,6 @@ function FixedUpdate() {
 			FlipFace();
 		}
 	} 	
-	
-	// key up
-	// set animation when not move
-	if (Input.GetKeyUp(moveLeft)) {
-		if (!faceRight) {
-			animator.SetBool("move", false);
-		}
-	}
-	
-	if (Input.GetKeyUp(moveRight)) {
-		if (faceRight) {
-			animator.SetBool("move", false);
-		}
-	}
 	
 	if (collider2D.bounds.min.x <= base.collider2D.bounds.min.x) {
 		if (!faceRight) {
