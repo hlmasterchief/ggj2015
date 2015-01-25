@@ -13,6 +13,7 @@ function Start () {
 
 	rad = 0;
 	first = Random.Range(0, base.collider2D.bounds.max.y - collider2D.bounds.extents.y - 16);
+	transform.position.y = base.collider2D.bounds.max.y + collider2D.bounds.extents.y + 16;
 }
 
 function getFirst() {
