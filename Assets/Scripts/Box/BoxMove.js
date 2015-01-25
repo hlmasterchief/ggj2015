@@ -2,7 +2,7 @@
 
 public var speed : float = 2;
 public var distance : float = 200;
-public var item : GameObject;
+public var item : GameObject[] = new GameObject[2];
 
 private var rad : float;
 private var first : float;
