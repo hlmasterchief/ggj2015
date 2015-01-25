@@ -23,6 +23,7 @@ function FixedUpdate () {
 		var obj : GameObject;
 		var maxCol : int;
 		var script : BoxMove;
+		var boxParent : GameObject = GameObject.Find("Boxes");
 		
 		if (pos.x < 0) {
 			pos.x += box.collider2D.bounds.extents.x + 12;
@@ -32,6 +33,7 @@ function FixedUpdate () {
 		
 		delay = Random.Range(1, maxDelay);
 		obj = Instantiate(box);
+		obj.transform.parent = boxParent.transform;
 		
 		maxCol = Mathf.Ceil((base.collider2D.bounds.extents.x * 2 * base.transform.localScale.x)
 											/ (obj.collider2D.bounds.extents.x * 2 * obj.transform.localScale.x + 6));
