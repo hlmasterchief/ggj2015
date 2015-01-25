@@ -227,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 576107310}
   m_GameObject: {fileID: 206930950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.988029, y: 294.888824, z: 0}
+  m_LocalPosition: {x: 280, y: 294.888824, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -245,6 +245,7 @@ GameObject:
   - 50: {fileID: 462261149}
   - 114: {fileID: 462261148}
   - 95: {fileID: 462261147}
+  - 114: {fileID: 462261153}
   m_Layer: 10
   m_Name: CoinBox
   m_TagString: Boxes
@@ -346,6 +347,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &462261153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: cbb7c5d33d0f64335b6fd0ae9cc08365,
+    type: 2}
+  m_PrefabInternal: {fileID: 1386221664}
+  m_GameObject: {fileID: 462261146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d5d86195717e549b2bb5ddb160dffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 426534, guid: 7b185ab1a4ec947e98781988c54a0a0c, type: 2}
+  position: {x: 0, y: 0, z: 0}
 --- !u!1 &519584523
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +597,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 427606, guid: f2e058f2e176e49ec9986afa6256a246, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 103.988029
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 427606, guid: f2e058f2e176e49ec9986afa6256a246, type: 2}
       propertyPath: m_LocalPosition.y
@@ -610,7 +625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 427606, guid: f2e058f2e176e49ec9986afa6256a246, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2e058f2e176e49ec9986afa6256a246, type: 2}
@@ -809,7 +824,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 973414700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29140907360b074fa65faa2e1530312, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e4b328d1698d444786f8a38df6e7d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vx: 0
@@ -817,8 +832,6 @@ MonoBehaviour:
   vix: 15
   viy: 10
   ax: .200000003
-  baseay: .200000003
-  pow: 1
   ay: .200000003
   shoot: 323
   tmpx: 0
@@ -887,6 +900,7 @@ GameObject:
   - 50: {fileID: 1241297368}
   - 114: {fileID: 1241297367}
   - 95: {fileID: 1241297366}
+  - 114: {fileID: 1241297372}
   m_Layer: 10
   m_Name: Coin Box
   m_TagString: Boxes
@@ -988,6 +1002,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1241297372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: cbb7c5d33d0f64335b6fd0ae9cc08365,
+    type: 2}
+  m_PrefabInternal: {fileID: 2096044350}
+  m_GameObject: {fileID: 1241297365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d5d86195717e549b2bb5ddb160dffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 426534, guid: 7b185ab1a4ec947e98781988c54a0a0c, type: 2}
+  position: {x: 0, y: 0, z: 0}
 --- !u!1001 &1306425273
 Prefab:
   m_ObjectHideFlags: 0
@@ -1163,7 +1191,7 @@ GameObject:
   - 95: {fileID: 1927121743}
   m_Layer: 0
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1281,7 +1309,7 @@ GameObject:
   - 95: {fileID: 2066234911}
   m_Layer: 0
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
